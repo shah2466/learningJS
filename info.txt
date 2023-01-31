@@ -1,0 +1,100 @@
+1) Playwright Test is based on the concept of test fixtures. 
+Test fixtures are used to establish environment for each test, giving the test everything 
+it needs and nothing else. 
+Test fixtures are isolated between tests.
+
+2) Before and After hooks:
+Execute an action before and after each step or test. There are times when it's necessary to 
+run a specific action before or after each step or test
+
+3) Test Fixtures
+Test fixture refers to the fixed state used as a baseline for running tests in software testing. 
+The purpose of a test fixture is to ensure that there is a well known and fixed environment in which tests are run so that results are repeatable. Some people call this the test context.
+
+Examples of fixtures:
+
+Loading a database with a specific, known set of data
+Erasing a hard disk and installing a known clean operating system installation
+Copying a specific known set of files
+Preparation of input data and set-up/creation of fake or mock objects...
+
+4) Test hooks
+General definition: A hook is a means of executing custom code (function) either before, after, or instead of existing code. 
+For example, a function may be written to "hook" into the login process in order to execute a Captcha function 
+before continuing on to the normal login process.
+In relation to playwright, you can use various test hooks such as test.describe to declare a group of tests and test.beforeEach 
+and test.afterEach which are executed before/after each test. Other hooks include the test.beforeAll 
+and test.afterAll which are executed once per worker before/after all tests.
+
+test.afterAll(async () => {
+  console.log('Done with tests');
+  // ...
+});
+Declares an afterAll hook that is executed once per worker after all tests.
+
+5) Require(argument). this function is similar to import function.
+In NodeJS, require() is a built-in function to include external modules that exist in separate files. require() statement basically reads a JavaScript file, executes it, and then proceeds to return the export object. 
+require() statement not only allows to add built-in core NodeJS modules but also community-based and local modules.
+One of the major differences between require() and import() is that require() can be called from anywhere inside the program whereas import() cannot be called conditionally, it always runs at the beginning of the file.
+
+To use the require() statement, a module must be saved with .js extension as opposed to .mjs when the import() statement is used.
+
+6) HOISTING: Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. 
+var: variables are hoisted to the top of their scope and initialized with a value of undefined.
+let: declarations are hoisted to the top. Unlike var which is initialized as undefined, the let keyword is not initialized. 
+  if you try to use a let variable before declaration, you'll get a Reference Error.
+Const: declarations are hoisted to the top but are not initialized.
+
+7) Var vs Const vs Let
+VAR: The scope is global when a var variable is declared outside a function. var is function scoped when it is declared within a function.
+	var variables can be re-declared and updated.
+LET: let is now preferred for variable declaration.let is block scoped. A block is a chunk of code bounded by {}. A block lives in curly braces. 
+Anything within curly braces is a block. So a variable declared in a block with let  is only available for use within that block.
+let can be updated but not re-declared.
+
+
+CONST: Variables declared with the const maintain constant values. const declarations share some similarities with let declarations.
+const declarations are block scoped. **const cannot be updated or re-declared**
+Every const declaration, therefore, must be initialized at the time of declaration.
+This behavior is somehow different when it comes to objects declared with const. While a const object cannot be updated, the properties of this objects can be updated.
+const declarations are hoisted to the top but are not initialized.
+
+
+8) Functions: functions are first-class citizens in JavaScript. Therefore, you can pass a function to another function as an argument.
+
+Anonymous functions: function without a name.An anonymous function is not accessible after its initial creation. Therefore, you often need to assign it to a variable.
+Note that if you don’t place the anonymous function inside the (), you’ll get a syntax error. 
+The () makes the anonymous function an expression that returns a function object.
+Anonymous functions can be used as an argument to other functions or as an immediately invoked function execution.
+
+Immediately invoked function execution.
+(function () {
+    console.log('Immediately invoked function execution');
+})();
+
+Arrow function: shorthand for declaring anonymous function.
+
+9) **When you define a function, the JavaScript engine adds the function to the global object.
+**Likewise, if you declare a variable outside of a function using the var keyword, the JavaScript engine also adds the variable to the global object.
+If you have many global variables and functions, the JavaScript engine will only release the memory allocated for them until the global object loses its scopes.
+As a result, the script may use the memory inefficiently. On top of that, having global variables and functions will likely cause name collisions.
+One way to prevent the functions and variables from polluting the global object is to use immediately invoked function expressions.
+By placing functions and variables inside an immediately invoked function expression, you can avoid polluting them to the global object.
+
+(function() {
+    var counter = 0;
+
+    function add(a, b) {
+        return a + b;
+    }
+
+    console.log(add(10,20)); // 30
+}());
+An IIFE can have a name. However, it cannot be invoked again after execution:
+
+10)  function can be also declared as an expression which is called a function expression:
+let sum = function(a, b) {
+    return a + b;
+}
+In this syntax, the part on the right side of the assignment operator(=) is a function expression. Because a function is an expression, you can wrap it inside parentheses.
+
