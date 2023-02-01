@@ -112,3 +112,38 @@ bind() method creates a new function that you can execute later while the call()
 
 12) JavaScript functions can return a single value. To return multiple values from a function, you can pack the return values as 
 elements of an array or as properties of an object.
+
+13) DESTRUCTURING
+Note: Curly brackets ‘{ }’ are used to destructure the JavaScript Object properties.
+Note: Curly brackets ‘[ ]’ are used to destructure the JavaScript Array.
+
+14) Primitive vs Reference value:
+Primitive values are atomic pieces of data while reference values are objects that might consist of multiple values.
+Note that 'strings' are objects in many programming languages, including Java and C#. However, strings are primitive values in JavaScript.
+Reference variable is a variable stored in STACK memory that refers to an object on HEAP memory.
+Because static data has a size that does not change, the JavaScript engine allocates a fixed amount of memory space to the static data and store it on the stack.
+Static data is the data whose size is fixed at compile time. Static data includes:
+a) Primitive values (null, undefined, boolean, number, string, symbol, and BigInt)
+b) Reference values that refer to objects.
+
+Non-Static data is stored in HEAP memory. JavaScript 'object's and 'functions' are non-static and live in heap.
+The JavaScript engine doesn’t allocate a fixed amount of memory for these objects. Instead, it’ll allocate more space as needed.
+Unlike a reference value, a primitive value cannot have properties. This means that you cannot add a property to a primitive value.
+JavaScript allows you to add a property to a primitive value. However, it won’t take any effect.
+
+COpying a value:
+When you assign a primitive value from one variable to another, the JavaScript engine creates a SEPARATE copy of that value and assigns it to the variable.
+If you change the value of one variable, it won’t affect the other. 
+
+When you assign a reference value from one variable to another, the JavaScript engine creates a reference so that both variables refer to the same object on the heap memory. 
+This means that if you change one variable, it’ll affect the other.
+
+15) JavaScript pass-by-value or pass-by-reference:
+JavaScript passes all arguments to a function by values.
+Function arguments are local variables in JavaScript.
+In JavaScript, all function arguments are always passed by value. It means that JavaScript copies the values of the variables into the function arguments.
+Any changes that you make to the arguments inside the function do not reflect the passing variables outside of the function. 
+In other words, the changes made to the arguments are not reflected outside of the function.
+
+If function arguments are passed by reference, the changes of variables that you pass into the function will be reflected outside the function. 
+This is not possible in JavaScript.
