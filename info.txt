@@ -147,3 +147,11 @@ In other words, the changes made to the arguments are not reflected outside of t
 
 If function arguments are passed by reference, the changes of variables that you pass into the function will be reflected outside the function. 
 This is not possible in JavaScript.
+
+16) Function are firstclass citizens: An entity that can be constructed at run-time, passed as a parameter, returned from a function, or assigned into a variable
+You can pass functions to other functions as arguments, return them from other functions as values, and store them in variables.
+"If any programming language has the ability to treat functions as values, to pass them as arguments and to return a function from another function then it is 
+said that programming language has First Class Functions and the functions are called as First Class Citizens in that programming language."
+ In languages with first-class functions, the names of functions do not have any special status; they are treated like ordinary variables with a function type.
+ A member of a class of individuals that receive fair treatment.
+ **Very loosely, this just means we can use a function in the same way we use a variable.
