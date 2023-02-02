@@ -148,10 +148,56 @@ In other words, the changes made to the arguments are not reflected outside of t
 If function arguments are passed by reference, the changes of variables that you pass into the function will be reflected outside the function. 
 This is not possible in JavaScript.
 
-16) Function are firstclass citizens: An entity that can be constructed at run-time, passed as a parameter, returned from a function, or assigned into a variable
+16) Function are firstclass citizens: An entity that can be constructed at run-time, passed as a parameter, returned from a function, or assigned into a variable.
 You can pass functions to other functions as arguments, return them from other functions as values, and store them in variables.
 "If any programming language has the ability to treat functions as values, to pass them as arguments and to return a function from another function then it is 
 said that programming language has First Class Functions and the functions are called as First Class Citizens in that programming language."
  In languages with first-class functions, the names of functions do not have any special status; they are treated like ordinary variables with a function type.
  A member of a class of individuals that receive fair treatment.
  **Very loosely, this just means we can use a function in the same way we use a variable.
+
+ 17) Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the 
+ prototype will have its own prototype, making what's called a prototype chain. 
+ The chain ends when we reach a prototype that has null for its own prototype.
+
+18) **Callback: a callback is a function that you pass into another function as an argument to execute at a later time.
+
+18) **The setTimeout() is a method of the window object. The setTimeout()  sets a timer and executes a callback function after the timer expires.
+
+19) **PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
+A promise object has a state that can be one of the following:
+Pending
+Fulfilled with a value
+Rejected for a reason
+In the beginning, the state of a promise is pending, indicating that the asynchronous operation is in progress. 
+Depending on the result of the asynchronous operation, the state changes to either fulfilled or rejected.
+
+20) **For Loop: For..of vs For..in
+Difference for..in and for..of:
+Both for..in and for..of are looping constructs which are used to iterate over data structures. The only difference between them is the entities they iterate over:
+
+for..in iterates over all enumerable property keys of an object
+for..of iterates over the values of an iterable object. Examples of iterable objects are arrays, strings, and NodeLists.
+The values which an iterable data structure will return using for..of is dependent on the type of iterable object. 
+For example an array will return the values of all the array elements whereas a string returns every individual character of the string
+
+21) String literals vs OBject literals:
+A string literal is zero or more characters enclosed in double (") or single quotation marks (')
+eg: "foo"
+An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ({}).
+eg: const car = {
+  myCar: "Toyota",
+};
+
+22) Constructor:
+A constructor is just a function called using the new keyword. When you call a constructor, it will:
+-create a new object
+-bind 'this' to the new object, so you can refer to this in your constructor code
+-run the code in the constructor
+-return the new object.
+Constructors, by convention, start with a capital letter and are named for the type of object they create.
+
+23) Object Prototype:
+Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype 
+will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
