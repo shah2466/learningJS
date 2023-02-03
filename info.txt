@@ -160,11 +160,11 @@ said that programming language has First Class Functions and the functions are c
  prototype will have its own prototype, making what's called a prototype chain. 
  The chain ends when we reach a prototype that has null for its own prototype.
 
-18) **Callback: a callback is a function that you pass into another function as an argument to execute at a later time.
+18) NOT DONE YET**Callback: a callback is a function that you pass into another function as an argument to execute at a later time.
 
-18) **The setTimeout() is a method of the window object. The setTimeout()  sets a timer and executes a callback function after the timer expires.
+18) NOT DONE YET**The setTimeout() is a method of the window object. The setTimeout()  sets a timer and executes a callback function after the timer expires.
 
-19) **PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
+19) NOT DONE YET**PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
 A promise object has a state that can be one of the following:
 Pending
 Fulfilled with a value
@@ -173,13 +173,56 @@ In the beginning, the state of a promise is pending, indicating that the asynchr
 Depending on the result of the asynchronous operation, the state changes to either fulfilled or rejected.
 
 20) **For Loop: For..of vs For..in
-Difference for..in and for..of:
-Both for..in and for..of are looping constructs which are used to iterate over data structures. The only difference between them is the entities they iterate over:
+Difference for..in and for..of: **Arrays are OBJECT is JS but their KEYS are indices, not the properties.
+Since arrays are just fancy objects in JavaScript, this also means we can be a bit crazy and attach new properties to arrays.
+If you're using a library of code developed by someone, then they could have attached non-integer properties to their arrays. 
+This is why it's generally preferable to use arrays with for...of and objects with for...in.
+OBjects are NOt iterable by default. They can be made iterable by defining the Symbol.iterator property.
 
-for..in iterates over all enumerable property keys of an object
+Both for..in and for..of are looping constructs which are used to iterate over data structures. The only difference between them is the entities they iterate over:
+for..in iterates over all enumerable 'property keys' of an object.
 for..of iterates over the values of an iterable object. Examples of iterable objects are arrays, strings, and NodeLists.
 The values which an iterable data structure will return using for..of is dependent on the type of iterable object. 
-For example an array will return the values of all the array elements whereas a string returns every individual character of the string
+For example an array will return the values of all the array elements whereas a string returns every individual character of the string.
+So you can use:
+for .. of for [array, Map, Set, String] to iterate over values; 
+for...of loop only iterates through the integer properties of an array. That is, only the indices of the array.
+for .. in for an array to iterate over a key;
+for .. in for objects to enumerate its (object's) properties;
+
+Just remember! 
+1. for (every prop in objects) { // do this }      *objects - enumerable*
+2. for (every item of array) { // do this }          *arrays - iterable**
+
+The for…in loop is used to enumerate. We can use this on objects and arrays.
+
+The for…of loop is used to iterate. We can only use this on arrays.
+
+Enumerable: Enumeration is a listing of all of the elements of a set. It is a fancy word for counting.
+Enumerable properties are properties of an object whose internal enumerable flag (property descriptor) is set to true, which is the 
+default for properties created via simple assignment or via a property initializer. When we create an object by assigning it to a variable, 
+each property will have the enumerable descriptor set to true. We can actually set the enumerable 
+descriptor to false to hide properties during a for...in loop by using Object.defineProperty or Object.defineProperties.
+
+If we try using a for...of loop with an object, it will likely fail. This is because objects aren't considered iterable or array-like by default.
+There are ways to make an object iterable, but it seems like a lot of overhead when we can 
+easily iterate through keys or values of an object using Object.keys, Object.values, or Object.entries.
+
+Summary by me*****: for..in gives you keys. For..of give value of each element in the Array based on the integer indices. If we add a key value pair (object) inside
+an array, that object is NOT iterable. Meaning, it does not get the integer indices that we need to access the value of that object.
+Without having the intiger indices of an array element, we can't access the value of it.
+
+The for...in statement iterates only over enumerable, non-symbol properties, including inherited 
+enumerable properties.
+The for...in loop will traverse all integer keys before traversing other keys, and in strictly increasing order.
+for...in loop will return all enumerable properties, including those with non–integer names and those that are inherited.
+For and FOr..of loop will return the index as a 'number' instead of a string, and also avoid non-index properties.
+
+A for...of loop operates on the values sourced from an iterable one by one in sequential order. Each operation of the loop on a value is called an iteration, and 
+the loop is said to iterate over the iterable. Each iteration executes statements that may refer to the current sequence value.
+
+
+21) @@iterator = Symbol.iterator.
 
 21) String literals vs OBject literals:
 A string literal is zero or more characters enclosed in double (") or single quotation marks (')
@@ -197,7 +240,29 @@ A constructor is just a function called using the new keyword. When you call a c
 -return the new object.
 Constructors, by convention, start with a capital letter and are named for the type of object they create.
 
-23) Object Prototype:
+23) Object Prototype: it is a way to implement inheritance.
 Prototypes are the mechanism by which JavaScript objects inherit features from one another.
 Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype 
 will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
+The standard way to access an object's prototype is the Object.getPrototypeOf() method.
+When you try to access a property of an object: if the property can't be found in the object itself, the prototype is searched for the property. 
+If the property still can't be found, then the prototype's prototype is searched, 
+and so on until either the property is found, or the end of the chain is reached, in which case undefined is returned.
+Object.getPrototypeOf(myObject); // Object { }
+This is an object called Object.prototype, and it is the most basic prototype, that all objects have by default. 
+The prototype of Object.prototype is null, so it's at the end of the prototype chain.
+The prototype of an object is not always Object.prototype.
+
+ArrayPrototype: prototype allows you to add new properties and methods to arrays. prototype is a property available with all JavaScript objects.
+Syntax: Array.prototype.name = value. The value can be a function or anything.
+
+24) Shadowing properties: similar to overriding from java??
+What happens if you define a property in an object, when a property with the same name is defined in the object's prototype?
+--nothing happens, the property of the object is used, not the property in object's prototype.
+
+-----read these:
+https://www.javascripttutorial.net/javascript-call-stack/
+https://www.javascripttutorial.net/javascript-callback/
+https://www.javascripttutorial.net/javascript-bom/javascript-settimeout/
+https://www.javascripttutorial.net/es6/javascript-promises/
+https://www.javascripttutorial.net/javascript-regular-expression/
