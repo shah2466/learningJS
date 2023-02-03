@@ -4,7 +4,9 @@
  * Syntax: Array.prototype.name = value.
  */
 
-/**Create a custom method that transforms any array values into upper case:*/
+/**Create a custom method that transforms any array values into upper case. This myUcase function(method) is not available to Array Objects in JS by default.
+ * So as an user, if I want to implement that function, I can make change to the prototype. Once done, any array can use that properties.
+ */
 
 Array.prototype.myUcase = function () {
   for (let i = 0; i < this.length; i++) {
