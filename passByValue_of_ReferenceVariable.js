@@ -10,7 +10,7 @@ If function arguments are passed by reference, the changes of variables that you
 This is not possible in JavaScript.
 
 ***My understanding is, when passing the value of a reference variable to a function, the value can be modified but you cannot modify which object the 
-passed reference points to.
+referenced variable points to.
  */
 
 /* lets create an object */
@@ -27,7 +27,7 @@ let person1 = {
 //   return obj1;
 // }
 
-// let modified_person1 = increaseAge(person1); //At this point, obj reference variable and person reference variable are pointing to the same object.
+// let modified_person1 = increaseAge(person1); //At this point, obj reference variable and 'person' reference variable are pointing to the same object.
 
 // console.log(person1); //{ name: 'Raj', age: 26, city: 'Herndon' }
 // console.log(modified_person1); //{ name: 'Raj', age: 26, city: 'Herndon' }
@@ -36,7 +36,7 @@ let person1 = {
  * It seems that JavaScript passes an object by reference because the change to the object is reflected outside the function. However, this is not the case.
  */
 
-/* lets take an example where the obj (refer) to another object (person2) while it is inside the changeCity() function. This will not make person reference 
+/* lets take an example where the obj (refer) to another object (person2) while it is inside the changeCity() function. This will not make 'person' reference 
 variable point to the person2. */
 
 function changeCity(obj1) {
@@ -52,4 +52,4 @@ function changeCity(obj1) {
 
 changeCity(person1);
 console.log(person1); //{ name: 'Raj', age: 25, city: 'Chantilly' }. So person1 still points to the original person1 object although obj1 is now pointing to a person2.
-console.log(changeCity(person1)); //{ name: 'Jack', age: 88 }. Becauase the function returns obj1 that now points to person2
+console.log(changeCity(person1)); //{ name: 'Jack', age: 88 }. Because changeCity function returns obj1 that now points to person2.

@@ -14,4 +14,4 @@ const person = {
 console.log(person.name.first);
 console.log(person["name"]["last"]); //can also do this
 
-// if an object property name is held in a variable, then you can't use dot notation to access the value, but you can access the value using bracket notation.
+// if an object property name is held in a variable, then you can't use 'dot' notation to access the value, but you can access the value using bracket notation.
