@@ -7,7 +7,7 @@ The apply() and call() methods call a function with a given 'this' value and arg
 The difference between the apply() and call() is that you need to pass the arguments to the apply() 
 method as an array-like object, whereas you pass the arguments to the call() function individually.
 
-The bind() method creates a new function instance whose this value is bound to the object that you provide.
+The bind() method creates a new function instance whose 'this' value is bound to the object that you provide.
 bind() method creates a new function that you can execute later while the call() method executes the function immediately.
 */
 

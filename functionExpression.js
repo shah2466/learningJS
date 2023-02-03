@@ -19,7 +19,7 @@ sum = (function (a, b) {
 })(5, 3);
 console.log(sum);
 
-/* i cna also output like but this is different topic */
+/* i can also output like but this is different topic */
 
 console.log(
   (sum = (function (a, b) {
