@@ -1,3 +1,36 @@
+1) JavaScript Asynchronous Programming and Callbacks:
+JavaScript is synchronous by default, and is single threaded. This means that code cannot create new threads and run in parallel.
+Lines of code are executed in series, one after another.
+The JavaScript engine executes a script from the top of the file and works its way down. It creates the execution contexts, pushes, and pops functions onto 
+and off the call stack in the execution phase.
+If a function takes a long time to execute, you cannot interact with the web browser during the function’s execution because the page hangs.
+A function that takes a long time to complete is called a blocking function. Technically, a blocking function blocks all the interactions on the webpage, 
+such as mouse click. An example of a blocking function is a function that calls an API from a remote server.
+
+JavaScript Event Loop:  constantly running process that coordinates the tasks between the call stack and callback queue to achieve concurrency.
+To prevent a blocking function from blocking other activities, you typically put it in a callback function for execution later.
+
+
+
+
+Computers are asynchronous by design. Asynchronous means that things can happen independently of the main program flow.
+In the current consumer computers, every program runs for a specific time slot and then it stops its execution to let another program continue their execution. 
+This thing runs in a cycle so fast that it's impossible to notice. We think our computers run many programs simultaneously, but this is an
+ illusion (except on multiprocessor machines). Programs internally use interrupts, a signal that's emitted to the processor to gain the attention of the system.
+
+JavaScript is a single-threaded programming language. This means that the JavaScript engine has only one call stack. Therefore, it only can do one thing at a time.
+When executing a script, the JavaScript engine executes code from top to bottom, line by line. In other words, it is synchronous.
+Asynchronous means the JavaScript engine can execute other tasks while waiting for another task to be completed. For example, the JavaScript engine can:
+-Request for data from a remote server.
+-Display a spinner
+-When the data is available, display it on the webpage.
+To do this, the JavaScript engine uses an event loop.
+
+The call stack uses the stack data structure that works based on the LIFO (last-in-first-out) principle.
+A call stack is a way for the JavaScript engine to keep track of its place in code that calls multiple functions.
+
+
+
 1) Playwright Test is based on the concept of test fixtures. 
 Test fixtures are used to establish environment for each test, giving the test everything 
 it needs and nothing else. 
@@ -14,6 +47,12 @@ Loading a database with a specific, known set of data
 Erasing a hard disk and installing a known clean operating system installation
 Copying a specific known set of files
 Preparation of input data and set-up/creation of fake or mock objects...
+
+3) Context: Context is related to objects. It refers to the object to which a function belongs.
+When the JavaScript engine executes the JavaScript code, it creates execution contexts.
+
+Each execution context has two phases: the creation phase and the execution phase. https://www.javascripttutorial.net/javascript-execution-context/
+
 
 3) Before and After hooks:
 Execute an action before and after each step or test. There are times when it's necessary to 
@@ -158,11 +197,25 @@ said that programming language has First Class Functions and the functions are c
  A member of a class of individuals that receive fair treatment.
  **Very loosely, this just means we can use a function in the same way we use a variable.
 
-17) NOT DONE YET**Callback: a callback is a function that you pass into another function as an argument to execute at a later time.
+17) Callback: a callback is a function that you pass into another function as an argument to execute at a later time.
+A callback is a simple function that's passed as a value to another function, and will only be executed when the event happens.
+eg: setTimeout(callback_function(), 1000). Here the callback function will be executed when 1000 milliseconds passes.
+We can do this because JavaScript has first-class functions, which can be assigned to variables and passed around to other functions (called higher-order functions).
+It's common to wrap all your client code in a 'load' event listener on the 'window' object, which runs the callback function only when the page is ready.
+You can't know when a user is going to click a button. So, you define an event handler for the click event. This event handler accepts a function, which will 
+be called when the event is triggered.
 
-18) NOT DONE YET**The setTimeout() is a method of the window object. The setTimeout()  sets a timer and executes a callback function after the timer expires.
+Alternatives to callbacks:
+Starting with ES6, JavaScript introduced several features that help us with asynchronous code that do not involve using callbacks: Promises (ES6) and Async/Await.
 
-19) NOT DONE YET**PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
+18) The setTimeout() is a method of the window object. The setTimeout()  sets a timer and executes a callback function after the timer expires.
+setTimeout() is an asynchronous function, meaning that the timer function will not pause execution of other functions in the
+ functions stack. In other words, you cannot use setTimeout() to create a "pause" before the next function in the function stack fires.
+ In other words, it is used to delay the execution of a function while the javascript executes other code statements.
+
+
+19) PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
+To create a progression in which one function only fires after the completion of another function, use th Promise.
 A promise object has a state that can be one of the following:
 Pending
 Fulfilled with a value
@@ -170,7 +223,7 @@ Rejected for a reason
 In the beginning, the state of a promise is pending, indicating that the asynchronous operation is in progress. 
 Depending on the result of the asynchronous operation, the state changes to either fulfilled or rejected.
 
-20) **For Loop: For..of vs For..in
+20) For Loop: For..of vs For..in
 Difference for..in and for..of: **Arrays are OBJECT is JS but their KEYS are indices, not the properties.
 Since arrays are just fancy objects in JavaScript, this also means we can be a bit crazy and attach new properties to arrays.
 If you're using a library of code developed by someone, then they could have attached non-integer properties to their arrays. 
