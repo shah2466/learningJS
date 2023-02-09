@@ -46,11 +46,11 @@ async function display() {
 In this example, the await keyword instructs the JavaScript engine to wait for the sayHi() function to complete before displaying the message.
 
 1) Context: Context is related to objects. It refers to the object to which a function belongs.
-When the JavaScript engine executes the JavaScript code, it creates execution contexts.
+When the JavaScript engine executes the JavaScript code, it creates 'execution contexts'.
 
 
 1) Execution context: Execution context (EC) is defined as the environment in which the JavaScript code is executed. The environment means the value of 'this' object, 
-variables, objects, functions and function arguments, the JavaScript code has access to at a particular time.
+variables, objects, functions and function arguments, the JavaScript code has ACCESS to at a particular time.
 The term 'execution context' is actually for all intents and purposes referring more to 'scope' and NOT context.
 
 Each execution context has two phases: the creation phase and the execution phase. https://www.javascripttutorial.net/javascript-execution-context/
@@ -96,10 +96,10 @@ Test fixtures are used to establish environment for each test, giving the test e
 it needs and nothing else. 
 Test fixtures are isolated between tests.
 
-2) Test Fixtures
+2) Test Fixtures - everthing a test needs
 Test fixture refers to the fixed state used as a baseline for running tests in software testing. 
 The purpose of a test fixture is to ensure that there is a well known and fixed environment in which tests are run so that results are repeatable. 
-Some people call this the test context.
+Some people call this the TEST CONTEXT. (similar to JavaScript's execution context)
 
 Examples of fixtures:
 
@@ -112,7 +112,9 @@ Preparation of input data and set-up/creation of fake or mock objects...
 
 3) Before and After hooks:
 Execute an action before and after each step or test. There are times when it's necessary to 
-run a specific action before or after each step or test. Hooks are functionalities provided by software for users of that software to have their own code 
+run a specific action before or after each step or test. 
+
+Hooks: are functionalities provided by software for users of that software to have their own code 
 called under certain circumstances.
 
 4) Test hooks
@@ -122,6 +124,8 @@ before continuing on to the normal login process.
 In relation to playwright, you can use various test hooks such as test.describe to declare a group of tests and test.beforeEach 
 and test.afterEach which are executed before/after each test. Other hooks include the test.beforeAll 
 and test.afterAll which are executed once per worker before/after all tests.
+
+Worker: A worker is an object created using a constructor (e.g. Worker()) that runs a named JavaScript file — this file contains the code that will run in the worker thread.
 
 test.afterAll(async () => {
   console.log('Done with tests');
@@ -149,15 +153,14 @@ VAR: The scope is global when a var variable is declared outside a function. var
 	var variables can be re-declared and updated.
 
 LET: let is now preferred for variable declaration. 'let' is block scoped. A block is a chunk of code bounded by {}. A block lives in curly braces. 
-Anything within curly braces is a block. So a variable declared in a block with let  is only available for use within that block.
-let can be updated but NOT re-declared.
+Anything within curly braces is a block. So a variable declared in a block with 'let'  is only available for use within that block.
+'let' can be UPDATED but NOT re-declared.
 
 CONST: Variables declared with the const maintain constant values. const declarations share some similarities with let declarations.
 const declarations are block scoped. **const cannot be updated or re-declared**
-Every const declaration, therefore, must be initialized at the time of declaration.
-This behavior is somehow different when it comes to objects declared with const. While a const object cannot be updated, the properties of this objects can be updated.
-const declarations are hoisted to the top but are not initialized.
+Every const declaration, therefore, MUST BE INITIALIZED at the time of declaration.
 
+This behavior is somehow different when it comes to objects declared with const. While a const object cannot be updated, the PROPERTIES of this objects can be updated.
 
 8) Functions: functions are first-class citizens in JavaScript. Therefore, you can pass a function to another function as an argument.
 
