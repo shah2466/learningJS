@@ -2,34 +2,94 @@
 JavaScript is synchronous by default, and is single threaded. This means that code cannot create new threads and run in parallel.
 Lines of code are executed in series, one after another.
 The JavaScript engine executes a script from the top of the file and works its way down. It creates the execution contexts, pushes, and pops functions onto 
-and off the call stack in the execution phase.
+and off the 'call stack' in the execution phase.
 If a function takes a long time to execute, you cannot interact with the web browser during the function’s execution because the page hangs.
-A function that takes a long time to complete is called a blocking function. Technically, a blocking function blocks all the interactions on the webpage, 
+A function that takes a long time to complete is called a 'blocking function'. Technically, a blocking function blocks all the interactions on the webpage, 
 such as mouse click. An example of a blocking function is a function that calls an API from a remote server.
 
-JavaScript Event Loop:  constantly running process that coordinates the tasks between the call stack and callback queue to achieve concurrency.
+Asynchronicity: means that if JavaScript has to wait for an operation to complete, it will execute the rest of the code while waiting.
+
+EVENT LOOP:  Used to acheive concurrency/Asynchronicity . Constantly running process that coordinates the tasks between the call stack and callback queue to achieve concurrency.
 To prevent a blocking function from blocking other activities, you typically put it in a callback function for execution later.
+Asynchronous means the JavaScript engine can execute other tasks while waiting for another task to be completed.
 
+When you call the setTimeout(), the JavaScript engine creates a new function execution context and places it on the call stack.
+The setTimeout() executes and creates a timer in the Web APIs component of the web browser. When the timer expires, the callback function 
+that was passed in the setTimeout() is placed to the callback queue.
+The event loop monitors both the call stack and the callback queue. It removes the callback function from the callback queue and places it 
+to call stack when the call stack is empty. Once the callback function is on the call stack, it is executed.
 
-
-
-Computers are asynchronous by design. Asynchronous means that things can happen independently of the main program flow.
+Computers are asynchronous by design. Asynchronous means that things can happen independently of the main program flow. 
 In the current consumer computers, every program runs for a specific time slot and then it stops its execution to let another program continue their execution. 
 This thing runs in a cycle so fast that it's impossible to notice. We think our computers run many programs simultaneously, but this is an
  illusion (except on multiprocessor machines). Programs internally use interrupts, a signal that's emitted to the processor to gain the attention of the system.
 
-JavaScript is a single-threaded programming language. This means that the JavaScript engine has only one call stack. Therefore, it only can do one thing at a time.
+JavaScript is a 'single-threaded programming language'. JavaScript engine can do only one thing at a time. However, it’s more precise to say that the JavaScript runtime 
+can do one thing at a time. This means that the JavaScript engine has 'only one call stack'. Therefore, it only can do one thing at a time.
 When executing a script, the JavaScript engine executes code from top to bottom, line by line. In other words, it is synchronous.
 Asynchronous means the JavaScript engine can execute other tasks while waiting for another task to be completed. For example, the JavaScript engine can:
 -Request for data from a remote server.
 -Display a spinner
 -When the data is available, display it on the webpage.
-To do this, the JavaScript engine uses an event loop.
+To do this, the JavaScript engine uses an EVENT LOOP.
 
-The call stack uses the stack data structure that works based on the LIFO (last-in-first-out) principle.
+The call stack uses the stack data structure that works based on the LIFO (last-in-first-out) principle. The call stack is a collection of execution contexts.
 A call stack is a way for the JavaScript engine to keep track of its place in code that calls multiple functions.
 
+**vvi: calling console.log() also creates a function execution context.
+1) Async/await: You use the await keyword to wait for a Promise to settle either in resolved or rejected state. And you can use the await keyword only inside 
+an async function.
+async function display() {
+    let result = await sayHi();
+    console.log(result);
+}
+In this example, the await keyword instructs the JavaScript engine to wait for the sayHi() function to complete before displaying the message.
 
+1) Context: Context is related to objects. It refers to the object to which a function belongs.
+When the JavaScript engine executes the JavaScript code, it creates execution contexts.
+
+
+1) Execution context: Execution context (EC) is defined as the environment in which the JavaScript code is executed. The environment means the value of 'this' object, 
+variables, objects, functions and function arguments, the JavaScript code has access to at a particular time.
+The term 'execution context' is actually for all intents and purposes referring more to 'scope' and NOT context.
+
+Each execution context has two phases: the creation phase and the execution phase. https://www.javascripttutorial.net/javascript-execution-context/
+i) Creation phase: the interpreter will first create a variable object (also called an activation object) that is composed of all the variables, function declarations, 
+and arguments defined inside the execution context. From there, the scope chain is initialized next, and the value of 'this' is determined LAST. 
+ii) Execution phase, code is interpreted and executed.
+
+'this' context: Context is most often determined by how a function is invoked. When a function is called as a method of an object, this is set to the object the 
+method is called on:
+var obj = {
+    foo: function() {
+        return this;   
+    }
+};
+obj.foo() === obj; // true
+
+Execution context in JavaScript is of three types:
+a) Global execution context (GEC): This is the default execution context in which JS code start its execution when the file first loads in the browser. 
+All of the global code i.e. code which is not inside any function or object is executed inside the global execution context.
+Global execution context is present by default in 'execution context stack' and it is at the bottom of the stack. 
+GEC cannot be more than one because only one global environment is possible for JS code execution as the JS engine is single threaded.
+
+b) Functional execution context (FEC): Functional execution context is defined as the context created by the JS engine whenever it finds any function call. 
+Each function has its own execution context. It can be more than one. Functional execution context has access to all the code of the global execution context though 
+vice versa is not applicable. While executing the global execution context code, if JS engine finds a function call, it creates a new functional execution context for 
+that function. In the browser context, if the code is executing in 'strict mode', value of 'this' is 'undefined', else it is window object in the function execution context.
+
+c) Eval: Execution context inside eval function. Code executed inside an eval function also gets its own execution context, but as eval isn’t usually used by JavaScript 
+developers, so lets not discuss it here.
+
+Execution context stack (ECS): Execution context stack is a stack data structure, i.e. last in first out (LIFO) data structure, to store all the execution stacks 
+created during the life cycle of the script. Global execution context is present by default in execution context stack and it is at the bottom of the stack.
+When the JavaScript interpreter initially executes code, it first enters into a global execution context by default. 
+Each invocation of a function from this point on will result in the creation of a new execution context.
+While executing the global execution context code, if JS engines find a function call, it creates a functional execution context for that function and pushes 
+it on top of the execution context stack. JS engine executes the function whose execution context is at the top of the execution context stack. 
+Once all the code of the function is executed, JS engines pop out that function’s execution context and start’s executing the function which is below it.
+
+1) ${expression} = Placeholder
 
 1) Playwright Test is based on the concept of test fixtures. 
 Test fixtures are used to establish environment for each test, giving the test everything 
@@ -48,10 +108,6 @@ Erasing a hard disk and installing a known clean operating system installation
 Copying a specific known set of files
 Preparation of input data and set-up/creation of fake or mock objects...
 
-3) Context: Context is related to objects. It refers to the object to which a function belongs.
-When the JavaScript engine executes the JavaScript code, it creates execution contexts.
-
-Each execution context has two phases: the creation phase and the execution phase. https://www.javascripttutorial.net/javascript-execution-context/
 
 
 3) Before and After hooks:
@@ -80,11 +136,13 @@ One of the major differences between require() and import() is that require() ca
 
 To use the require() statement, a module must be saved with .js extension as opposed to .mjs when the import() statement is used.
 
-6) HOISTING: Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. 
+6) HOISTING: Hoisting is a JavaScript mechanism where variables and function 'declarations' are moved to the top of their scope before code execution. 
 var: variables are hoisted to the top of their scope and initialized with a value of UNDEFINED.
 let: declarations are hoisted to the top. Unlike var which is initialized as undefined, the let keyword is NOT initialized. 
   if you try to use a let variable before declaration, you'll get a Reference Error.
 Const: declarations are hoisted to the top but are NOT initialized.
+Hoisting is more of a compile-time thing. In JavaScript, function 'declarations' are "hoisted" to the top of their scope. In other words, they are parsed and 
+evaluated before any other code (This is opposed to 'function expressions', which are evaluated inline).
 
 7) Var vs Const vs Let
 VAR: The scope is global when a var variable is declared outside a function. var is function scoped when it is declared within a function.
@@ -213,6 +271,9 @@ setTimeout() is an asynchronous function, meaning that the timer function will n
  functions stack. In other words, you cannot use setTimeout() to create a "pause" before the next function in the function stack fires.
  In other words, it is used to delay the execution of a function while the javascript executes other code statements.
 
+Timeouts are cancelled using clearTimeout().
+
+To call a function repeatedly (e.g., every N milliseconds), consider using setInterval().
 
 19) PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
 To create a progression in which one function only fires after the completion of another function, use th Promise.
