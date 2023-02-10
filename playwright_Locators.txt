@@ -98,3 +98,10 @@ browser	    Browser	                Browsers are shared across tests to optimize
 browserName	string	                The name of the browser currently running the test. Either chromium, firefox or webkit.
 request	    APIRequestContext	    Isolated APIRequestContext instance for this test run.
 
+Fixtures have a number of advantages over before/after hooks:
+Fixtures encapsulate setup and teardown in the same place so it is easier to write.
+Fixtures are reusable between test files - you can define them once and use in all your tests. That's how Playwright's built-in page fixture works.
+Fixtures are on-demand - you can define as many fixtures as you'd like, and Playwright Test will setup only the ones needed by your test and nothing else.
+Fixtures are composable - they can depend on each other to provide complex behaviors.
+Fixtures are flexible. Tests can use any combinations of the fixtures to tailor precise environment they need, without affecting other tests.
+Fixtures simplify grouping. You no longer need to wrap tests in describes that set up environment, and are free to group your tests by their meaning instead.
