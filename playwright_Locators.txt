@@ -1,0 +1,100 @@
+Locators: ****************************************
+Locators represent a way to find element(s) on the page at any moment.
+These are the recommended built in locators.
+
+page.getByRole() to locate by explicit and implicit accessibility attributes.
+page.getByText() to locate by text content. Find an element by the text it contains. You can match by a substring, exact string, or a regular expression
+page.getByLabel() to locate a form control by associated label's text.
+page.getByPlaceholder() to locate an input by placeholder.
+page.getByAltText() to locate an element, usually image, by its text alternative.
+page.getByTitle() to locate an element by its title attribute.
+page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
+
+page.getByRole(): locator reflects how users and assistive technology perceive the page. eg: button, a, input, etc
+page.getByLabel(): Use this locator when locating 'form fields'.
+page.getByPlaceholder(): Use this locator when locating form elements that do not have labels but do have placeholder texts
+page.getByText(): We recommend using text locators to find non interactive elements like div, span, p, etc.
+page.getByAltText(): Use this locator when your element supports alt text such as img and area elements.
+page.getByTitle(): Use this locator when your element has the title attribute.
+page.getByTestId(): You can also use test ids when you choose to use the test id methodology or when you can't locate by role or text.
+CSS and XPath: are not recommended as the DOM can often change leading to non resilient tests
+Locator.filter(): Locators can be filtered by text with the locator.filter() method. It will search for a particular string somewhere inside the element, possibly in 
+a descendant element, case-insensitively. You can also pass a regular expression.
+
+
+
+Actions: ****************************************
+locator.check():	Check the input checkbox
+locator.click():	Click the element
+locator.uncheck():	Uncheck the input checkbox
+locator.hover():	Hover mouse over the element
+locator.fill():	Fill the form field (fast)
+locator.type():	Type text character by character (slow)
+locator.focus():	Focus the element
+locator.press():	Press single key
+locator.setInputFiles():	Pick files to upload
+locator.selectOption():	Select option in the drop down
+
+
+Assertions: ****************************************
+Playwright Test uses the 'expect' library for test assertions which provides matchers like toEqual, toContain, toMatch, toBe and many more. It also extends this library with the 
+convenience async matchers that will wait until the expected condition is met. Using these matchers allows making the tests non-flaky and resilient.
+
+expect(locator).toBeChecked():	Checkbox is checked
+expect(locator).toBeEnabled():	Control is enabled
+expect(locator).toBeVisible():	Element is visible
+expect(locator).toContainText():	Element contains text
+expect(locator).toHaveAttribute():	Element has attribute
+expect(locator).toHaveCount():	List of elements has given length
+expect(locator).toHaveText():	Element matches text
+expect(locator).toHaveValue():	Input element has value
+expect(page).toHaveTitle():	Page has title
+expect(page).toHaveURL():	Page has URL
+expect(page).toHaveScreenshot():	Page has screenshot: This function will wait until two consecutive page screenshots yield the same result, and then 
+                                    compare the last screenshot with the expectation.
+
+Test Isolation: ****************************************
+Playwright Test is based on the concept of test fixtures such as the built in page fixture, which is passed into your test. Pages are isolated between tests due to 
+the Browser Context, which is equivalent to a brand new browser profile, where every test gets a fresh environment, even when multiple tests run in a single Browser.  
+
+Using Test Hooks: ****************************************
+You can use various test hooks such as test.describe to declare a group of tests and test.beforeEach and test.afterEach which are executed before/after each test. 
+Other hooks include the test.beforeAll and test.afterAll which are executed once per worker before/after all tests.
+
+import { test, expect } from "@playwright/test";
+
+test.describe("navigation", () => {
+  test.beforeEach(async ({ page }) => {
+    // Go to the starting url before each test.
+    await page.goto("https://playwright.dev/");
+  });
+
+  test("main navigation", async ({ page }) => {
+    // Assertions use the expect API.
+    await expect(page).toHaveURL("https://playwright.dev/");
+  });
+});
+
+Advanced: fixtures ****************************************
+Playwright Test is based on the concept of test fixtures. Test fixtures are used to establish environment for each test, giving the test everything it needs and nothing else. 
+Test fixtures are isolated between tests. With fixtures, you can group tests based on their meaning, instead of their common setup.
+
+Built-in fixtures:
+
+const { test, expect } = require('@playwright/test');
+
+test('basic test', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  await expect(page).toHaveTitle(/Playwright/);
+});
+
+The { page } argument tells Playwright Test to setup the page fixture and provide it to your test function.
+List of the PRE-DEFINED FIXTURES:
+Fixture	    Type	                Description
+page	    Page	                Isolated page for this test run.
+context	    BrowserContext	        Isolated context for this test run. The page fixture belongs to this context as well. Learn how to configure context.
+browser	    Browser	                Browsers are shared across tests to optimize resources. Learn how to configure browser.
+browserName	string	                The name of the browser currently running the test. Either chromium, firefox or webkit.
+request	    APIRequestContext	    Isolated APIRequestContext instance for this test run.
+

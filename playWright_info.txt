@@ -1,0 +1,41 @@
+1) Playwright Test is based on the concept of test fixtures. 
+Test fixtures are used to establish environment for each test, giving the test everything 
+it needs and nothing else. 
+Test fixtures are isolated between tests.
+
+2) Test Fixtures or Test Context - everthing a test needs
+Test fixture refers to the 'fixed state' used as a baseline for running tests in software testing. 
+The purpose of a test fixture is to ensure that there is a well known and fixed environment in which tests are run so that results are repeatable. 
+Some people call this the TEST CONTEXT. (similar to JavaScript's execution context)
+
+Examples of fixtures:
+
+Loading a database with a specific, known set of data
+Erasing a hard disk and installing a known clean operating system installation
+Copying a specific known set of files
+Preparation of input data and set-up/creation of fake or mock objects...
+
+
+3) Before and After hooks:
+Execute an action before and after each step or test. There are times when it's necessary to 
+run a specific action before or after each step or test. 
+
+Hooks: are functionalities provided by software for users of that software to have their own code 
+called under certain circumstances.
+
+4) Test hooks
+General definition: A hook is a means of executing custom code (function) either before, after, or instead of existing code. 
+For example, a function may be written to "hook" into the login process in order to execute a Captcha function 
+before continuing on to the normal login process.
+In relation to playwright, you can use various test hooks such as test.describe to declare a group of tests and test.beforeEach 
+and test.afterEach which are executed before/after each test. Other hooks include the test.beforeAll 
+and test.afterAll which are executed once per worker before/after all tests.
+
+test.afterAll(async () => {
+  console.log('Done with tests');
+  // ...
+});
+Declares an afterAll hook that is executed once per worker after all tests.
+
+Worker: A worker is an object created using a constructor (e.g. Worker()) that runs a named JavaScript file — this file contains the code that will run in the worker thread:
+workers run in another global context that is different from the current window.
