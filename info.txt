@@ -37,6 +37,35 @@ A call stack is a way for the JavaScript engine to keep track of its place in co
 
 **vvi: calling console.log() also creates a 'function execution context'.
 
+1) Callback: a callback is a function that you pass into another function as an argument to execute at a later time.
+A callback is a simple function that's passed as a value to another function, and will only be executed when the event happens.
+eg: setTimeout(callback_function(), 1000). Here the callback function will be executed when 1000 milliseconds passes.
+We can do this because JavaScript has first-class functions, which can be assigned to variables and passed around to other functions (called higher-order functions).
+It's common to wrap all your client code in a 'load' event listener on the 'window' object, which runs the callback function only when the page is ready.
+You can't know when a user is going to click a button. So, you define an event handler for the click event. This event handler accepts a function, which will 
+be called when the event is triggered.
+
+Alternatives to callbacks:
+Starting with ES6, JavaScript introduced several features that help us with asynchronous code that do not involve using callbacks: Promises (ES6) and Async/Await.
+
+1) The setTimeout() is a method of the window object. The setTimeout()  sets a timer and executes a callback function after the timer expires.
+setTimeout() is an asynchronous function, meaning that the timer function will not pause execution of other functions in the
+ functions stack. In other words, you cannot use setTimeout() to create a "pause" before the next function in the function stack fires.
+ In other words, it is used to delay the execution of a function while the javascript executes other code statements.
+
+Timeouts are cancelled using clearTimeout().
+
+To call a function repeatedly (e.g., every N milliseconds), consider using setInterval().
+
+1) PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
+To create a progression in which one function only fires after the completion of another function, use th Promise.
+A promise object has a state that can be one of the following:
+Pending
+Fulfilled with a value
+Rejected for a reason
+In the beginning, the state of a promise is pending, indicating that the asynchronous operation is in progress. 
+Depending on the result of the asynchronous operation, the state changes to either fulfilled or rejected.
+
 1) Async/await: You use the await keyword to wait for a Promise to settle either in resolved or rejected state. And you can use the await keyword only inside 
 an async function.
 async function display() {
@@ -89,64 +118,37 @@ While executing the global execution context code, if JS engines find a function
 it on top of the execution context stack. JS engine executes the function whose execution context is at the top of the execution context stack. 
 Once all the code of the function is executed, JS engines pop out that function’s execution context and start’s executing the function which is below it.
 
+
+/****************************/
+
 1) ${expression} = Placeholder
 
-1) Playwright Test is based on the concept of test fixtures. 
-Test fixtures are used to establish environment for each test, giving the test everything 
-it needs and nothing else. 
-Test fixtures are isolated between tests.
 
-2) Test Fixtures - everthing a test needs
-Test fixture refers to the fixed state used as a baseline for running tests in software testing. 
-The purpose of a test fixture is to ensure that there is a well known and fixed environment in which tests are run so that results are repeatable. 
-Some people call this the TEST CONTEXT. (similar to JavaScript's execution context)
-
-Examples of fixtures:
-
-Loading a database with a specific, known set of data
-Erasing a hard disk and installing a known clean operating system installation
-Copying a specific known set of files
-Preparation of input data and set-up/creation of fake or mock objects...
-
-
-
-3) Before and After hooks:
-Execute an action before and after each step or test. There are times when it's necessary to 
-run a specific action before or after each step or test. 
-
-Hooks: are functionalities provided by software for users of that software to have their own code 
-called under certain circumstances.
-
-4) Test hooks
-General definition: A hook is a means of executing custom code (function) either before, after, or instead of existing code. 
-For example, a function may be written to "hook" into the login process in order to execute a Captcha function 
-before continuing on to the normal login process.
-In relation to playwright, you can use various test hooks such as test.describe to declare a group of tests and test.beforeEach 
-and test.afterEach which are executed before/after each test. Other hooks include the test.beforeAll 
-and test.afterAll which are executed once per worker before/after all tests.
-
-Worker: A worker is an object created using a constructor (e.g. Worker()) that runs a named JavaScript file — this file contains the code that will run in the worker thread.
-
-test.afterAll(async () => {
-  console.log('Done with tests');
-  // ...
-});
-Declares an afterAll hook that is executed once per worker after all tests.
 
 5) Require(argument). This function is similar to import function.
-In NodeJS, require() is a built-in function to include external modules that exist in separate files. require() statement basically reads a JavaScript file, executes it, and then proceeds to return the export object. 
-require() statement not only allows to add built-in core NodeJS modules but also community-based and local modules.
+In NodeJS, require() is a built-in function to include external modules that exist in separate files. require() statement basically reads a JavaScript file, executes it, and 
+then proceeds to return the export object. require() statement not only allows to add built-in core NodeJS modules but also community-based and local modules.
 One of the major differences between require() and import() is that require() can be called from anywhere inside the program whereas import() cannot be called conditionally, it always runs at the beginning of the file.
 
 To use the require() statement, a module must be saved with .js extension as opposed to .mjs when the import() statement is used.
 
-6) HOISTING: Hoisting is a JavaScript mechanism where variables and function 'declarations' are moved to the top of their scope before code execution. 
+6) HOISTING: JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, 
+prior to execution of the code.
 var: variables are hoisted to the top of their scope and initialized with a value of UNDEFINED.
 let: declarations are hoisted to the top. Unlike var which is initialized as undefined, the let keyword is NOT initialized. 
   if you try to use a let variable before declaration, you'll get a Reference Error.
 Const: declarations are hoisted to the top but are NOT initialized.
-Hoisting is more of a compile-time thing. In JavaScript, function 'declarations' are "hoisted" to the top of their scope. In other words, they are parsed and 
-evaluated before any other code (This is opposed to 'function expressions', which are evaluated inline).
+Hoisting is more of a compile-time thing. 
+JavaScript interpreter hoists the 'entire' function declaration to the top of the current scope. In other words, they are parsed and evaluated before any other 
+code (This is opposed to 'function expressions', which are evaluated inline).
+Function hoisting only works with function declarations — not with function expressions. The code below will not work.
+
+console.log(square); // ReferenceError: Cannot access 'square' before initialization
+const square = function (n) {
+  return n * n;
+};
+
+7) In computer programming, to 'bind' is to create a connection between two or more programming objects for a specified time.
 
 7) Var vs Const vs Let
 VAR: The scope is global when a var variable is declared outside a function. var is function scoped when it is declared within a function.
@@ -175,6 +177,18 @@ Immediately invoked function execution.
 })();
 
 Arrow function: shorthand for declaring anonymous function.
+An arrow function does not have its own 'this'; the 'this' value of the enclosing execution context is used. Thus, in the following code, the 'this' within the function that is 
+passed to setInterval has the same value as 'this' in the enclosing function:
+
+function Person() {
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++; // `this` properly refers to the person object
+  }, 1000);
+}
+
+const p = new Person();
 
 9) **When you define a function, the JavaScript engine adds the function to the global object.
 **Likewise, if you declare a variable outside of a function using the var keyword, the JavaScript engine also adds the variable to the global object.
@@ -250,6 +264,11 @@ In other words, the changes made to the arguments are not reflected outside of t
 If function arguments are passed by reference, the changes of variables that you pass into the function will be reflected outside the function. 
 This is not possible in JavaScript.
 
+Parameters are essentially passed to functions by 'value' — so if the code within the body of a function assigns a completely new value to a parameter that was passed to the 
+function, the change is not reflected globally or in the code which called that function.
+When you pass an 'object' as a parameter, if the function changes the object's properties, that change is visible outside the function.
+When you pass an 'array' as a parameter, if the function changes any of the array's values, that change is visible outside the function
+
 16) Function are firstclass citizens: An entity that can be constructed at run-time, passed as a parameter, returned from a function, or assigned into a variable.
 You can pass functions to other functions as arguments, return them from other functions as values, and store them in variables.
 "If any programming language has the ability to treat functions as values, to pass them as arguments and to return a function from another function then it is 
@@ -258,34 +277,7 @@ said that programming language has First Class Functions and the functions are c
  A member of a class of individuals that receive fair treatment.
  **Very loosely, this just means we can use a function in the same way we use a variable.
 
-17) Callback: a callback is a function that you pass into another function as an argument to execute at a later time.
-A callback is a simple function that's passed as a value to another function, and will only be executed when the event happens.
-eg: setTimeout(callback_function(), 1000). Here the callback function will be executed when 1000 milliseconds passes.
-We can do this because JavaScript has first-class functions, which can be assigned to variables and passed around to other functions (called higher-order functions).
-It's common to wrap all your client code in a 'load' event listener on the 'window' object, which runs the callback function only when the page is ready.
-You can't know when a user is going to click a button. So, you define an event handler for the click event. This event handler accepts a function, which will 
-be called when the event is triggered.
 
-Alternatives to callbacks:
-Starting with ES6, JavaScript introduced several features that help us with asynchronous code that do not involve using callbacks: Promises (ES6) and Async/Await.
-
-18) The setTimeout() is a method of the window object. The setTimeout()  sets a timer and executes a callback function after the timer expires.
-setTimeout() is an asynchronous function, meaning that the timer function will not pause execution of other functions in the
- functions stack. In other words, you cannot use setTimeout() to create a "pause" before the next function in the function stack fires.
- In other words, it is used to delay the execution of a function while the javascript executes other code statements.
-
-Timeouts are cancelled using clearTimeout().
-
-To call a function repeatedly (e.g., every N milliseconds), consider using setInterval().
-
-19) PROMISE: a promise is an object that encapsulates the result of an asynchronous operation.
-To create a progression in which one function only fires after the completion of another function, use th Promise.
-A promise object has a state that can be one of the following:
-Pending
-Fulfilled with a value
-Rejected for a reason
-In the beginning, the state of a promise is pending, indicating that the asynchronous operation is in progress. 
-Depending on the result of the asynchronous operation, the state changes to either fulfilled or rejected.
 
 20) For Loop: For..of vs For..in
 Difference for..in and for..of: **Arrays are OBJECT is JS but their KEYS are indices, not the properties.
