@@ -5,4 +5,4 @@ let scores = [27, 12, 31, 19, 003];
 //Instead, we have to modify the Sort(). Below, the callback function recursively sorts our the number from smaller to largest
 scores.sort((a, b) => a - b);
 console.log(scores);
-//1.33
+//https://forum.freecodecamp.org/t/arr-sort-a-b-a-b-explanation/167677/11

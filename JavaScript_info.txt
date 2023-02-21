@@ -412,3 +412,22 @@ https://www.javascripttutorial.net/javascript-callback/
 https://www.javascripttutorial.net/javascript-bom/javascript-settimeout/
 https://www.javascripttutorial.net/es6/javascript-promises/
 https://www.javascripttutorial.net/javascript-regular-expression/
+
+25) What does the runtime environment mean in Node.js
+Essentially, everything that happens in the context of running Node.js app.
+When you're writing code, you're not in a “runtime environment”. The moment you do “npm start” (or whatever command you're using to start your application), you're in a 
+“runtime environment”. We could get technical and talk about the computer science-y definitions of these things, but that's only helpful to a certain extent. 
+It's more convenient and practical to have the mental model above. The reason we talk about the runtime environment is simply to distinguish what the context is of 
+your app. For example, with languages like Java, the app is compiled, so it has different runtime characteristics than a JavaScript app (which isn't compiled). 
+This means that Java will catch certain errors during compilation before running the app, whereas an uncompiled language like JavaScript won't catch a lot of things, except 
+for some syntax errors, etc. This is an important distinction because the runtime environment of JavaScript usually necessitates that you have a lot of type/variable 
+checking and error handling, since a lot of this stuff isn't caught until you actually run the app.
+
+26) How often do software developers use OOP?
+Any time you write a program longer than about 1,000 lines, you should use OOP. 1000 lines? Why’s that? Because a single program longer than 1,000 lines gets hard to 
+page through looking for a particular function or bit of code. You’re spending more time paging up and down than writing code. You need to break this code up into 
+chunks that can be separately dealt with. Objects are little programs that (should) average way less than 1,000 lines. The communication between objects is 
+sufficiently stylized that you can deal with the objects separately. Yes, you can break a million line procedural program into separate files (in fact you must). 
+But it’s hard to remember what files contain what stuff. Another problem with a big procedural program is that the global namespace fills up. Once you have 20,000 
+free functions and global variables in your global namespace, obvious names like “move” and “copy” tend to be used up. With OOP, the names of methods and variables are 
+enclosed in a namespace of objects. Your 20,000 function become 100 classes, and the global namespace becomes easier to work with.
