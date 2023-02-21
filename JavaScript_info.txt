@@ -78,9 +78,13 @@ In this example, the await keyword instructs the JavaScript engine to wait for t
 When the JavaScript engine executes the JavaScript code, it creates 'execution contexts'.
 
 
-1) Execution context: Execution context (EC) is defined as the environment in which the JavaScript code is executed. The environment means the value of 'this' object, 
+1) Execution context:  An Execution Context refers to the code that is currently running and everything else that helps run it.
+Execution context (EC) is defined as the environment in which the JavaScript code is executed. The environment means the value of 'this' object, 
 variables, objects, functions and function arguments, the JavaScript code has ACCESS to at a particular time.
 The term 'execution context' is actually for all intents and purposes referring more to 'scope' and NOT context.
+JavaScript creates an environment to execute the code we write. It takes care of the memory creation for variables, functions, objects, and so on in the creation phase. 
+Finally it executes the code in the execution phase. This special environment is called the Execution Context.
+There can be many such environments (Execution Contexts) in a JavaScript application. Each execution context operates independently from the others.
 
 Each execution context has two phases: the creation phase and the execution phase. https://www.javascripttutorial.net/javascript-execution-context/
 i) Creation phase: the interpreter will first create a variable object (also called an activation object) that is composed of all the variables, function declarations, 
@@ -431,3 +435,55 @@ sufficiently stylized that you can deal with the objects separately. Yes, you ca
 But it’s hard to remember what files contain what stuff. Another problem with a big procedural program is that the global namespace fills up. Once you have 20,000 
 free functions and global variables in your global namespace, obvious names like “move” and “copy” tend to be used up. With OOP, the names of methods and variables are 
 enclosed in a namespace of objects. Your 20,000 function become 100 classes, and the global namespace becomes easier to work with.
+
+26) JavaScript `this` Keyword + 5 Key Binding Rules:
+In JavaScript, the this keyword allows us to:
+1) Reuse functions in different execution contexts. It means, a function once defined can be invoked for different objects using the this keyword.
+2) dentifying the object in the current execution context when we invoke a method.
+
+The 'this' keyword is very closely associated with JavaScript functions. When it comes to this, the fundamental thing is to understand where a function is invoked. 
+Because we don't know what is in the this keyword until the function is invoked. The usage of this can be categorized into five different binding aspects. 
+In this article, we will learn about all five aspects with examples:
+https://www.freecodecamp.org/news/javascript-this-keyword-binding-rules/#:~:text=In%20JavaScript%2C%20the%20this%20keyword,when%20we%20invoke%20a%20method.
+
+What is Binding?***********************
+In JavaScript, a 'Lexical Environment' is where your code is physically written. In the example below, the variable 'name' is lexically inside the function sayName().
+function sayName() {
+  let name = 'someName';
+  console.log('The name is, ', name);
+ }
+'An Execution Context': refers to the code that is currently running and everything else that helps run it.
+There can be lots of 'lexical environments' available but the one that is currently running is managed by the Execution Context.
+Each of the 'Execution Context' contains an 'Environment Record'. As JavaScript engine executes the code, variables and function names gets added to the Environment Record.
+This phenomenon is known as 'Binding' in JavaScript. Binding helps associate the identifiers(variables, function names) with the 'this' keyword for an execution context.
+
+Rule #1: How JavaScript 'Implicit Binding' Works?
+  Implicit binding covers most of the use-cases for dealing with the this keyword. When we invoke a method of an object, we use the dot(.) notation to access it.
+  In implicit binding, you need to check the object adjacent to the method 'at the invocation time'. This determines what this is binding to.
+  So, in the case of implicit binding, 'this' binds to the object adjacent to the dot(.) operator while invoking the method.
+Rule #2: How JavaScript 'Explicit Binding' Works?
+  We have seen that JavaScript creates an environment to execute the code we write. It takes care of the memory creation for variables, functions, objects, and 
+  so on in the creation phase. Finally it executes the code in the execution phase. This special environment is called the Execution Context.
+  There can be many such environments (Execution Contexts) in a JavaScript application. Each 'execution context' operates 'independently' from the others.
+  But at times, we may want to use stuff from one execution context in another. That is where 'explicit binding' comes into play.
+  In explicit binding, we can call a 'function with an object' when the function is 'outside' of the execution context of the object.
+  There are three very special methods, call(), apply() and bind() that help us achieve explicit binding.
+  call(): With the call() method, the context with which the function has to be called will be passed as a parameter to the call(). Meaning: Call the function on which object.
+  apply(): It is exactly the same as call() but allows you to pass the arguments more conveniently. Here we are able to pass an array of arguments, which is much more 
+    convenient than passing them one by one. Tip: When you only have one value argument or no value arguments to pass, use call(). 
+    When you have multiple value arguments to pass, use apply().
+  bind(): Unlike the call() method of calling the function directly, bind() 'returns a brand new function' and we can invoke that instead.
+
+
+Rule #3: The JavaScript 'new' Binding:
+  A new keyword is used to create an object from the constructor function.
+  When a function is invoked with the new keyword, JavaScript creates an internal 'this' object(like, this = {}) within the function. 
+  The newly created 'this' binds to the object being created using the new keyword.
+Rule #4: JavaScript Global Object Binding:
+  If the 'this' keyword is NOT resolved with any of the bindings, implicit, explicit or new, then the 'this' is bound to the window(global) object.
+  There is one exception though. JavaScript strict mode does not allow this default binding. In the above case, this is undefined.
+Rule #5: HTML Event Element Binding in JavaScript:
+  In HTML event handlers, this binds to the HTML elements that receive the event.
+There is one more case where this behaves differently, such as with ES6 arrow functions.*******************************
+
+27) 'window' object is present only in the context of browser. When running application on nodejs no window object is available.

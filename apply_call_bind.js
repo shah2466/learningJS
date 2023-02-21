@@ -1,4 +1,6 @@
 /*
+https://www.freecodecamp.org/news/javascript-this-keyword-binding-rules/#:~:text=In%20JavaScript%2C%20the%20this%20keyword,when%20we%20invoke%20a%20method.
+
 A function object has three important methods: apply(), call() and bind(). 
 bind(), call(), and apply() methods are also known as borrowing functions (explained at the end).
 
