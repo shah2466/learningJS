@@ -1,3 +1,10 @@
+Finding Selectors: Rule of thumb
+If 'ID' is present: CSS -> tagname#id (or) #id
+If 'class' atribute is present: CSS -> tagname.class (or) .class
+Write CSS based on any attribute: CSS -> [attribute = 'value']
+Write CSS with traversing from Parent to Child: CSS -> parentTagname >> childTagname
+If needed to write the locator based on text: CSS -> text = ''
+
 Locators: ****************************************
 Locators represent a way to find element(s) on the page at any moment.
 These are the recommended built in locators.
