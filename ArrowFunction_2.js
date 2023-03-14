@@ -49,19 +49,23 @@ Perhaps the greatest benefit of using arrow functions is with methods like setTi
 that usually require some kind of closure, call(), apply(), or bind() to ensure that the function is executed in the proper scope.
 
 With traditional function expressions, code like this does not work as expected:
+********************
+Note: 'this' reers to the object that is executing the current function if the function is inside an object.
+Note: 'this' refers to the global object (eg: window) if it is inside a function.
 */
-const obj = {
+const obj1 = {
   count: 10,
+  //below, 'doSomethingLater()' is a method of an the 'obj1' hence, any 'this' inside it will bind to the 'obj1'.
   doSomethingLater() {
     setTimeout(function () {
-      // the function executes on the window scope
-      this.count++;
-      console.log(this.count);
+      // the function executes on the window scope because this function is inside a function, unlike 'doSomethingLater()' which is inside an object and has binding to 'obj1'
+      this.count++; //here 'this' refers to window object and 'count' variable in not defined in window scope.
+      console.log(this.count); //same as above
     }, 300);
   },
 };
 
-obj.doSomethingLater(); // logs "NaN", because the property "count" is not in the window scope. NaN = Not a number.
+obj1.doSomethingLater(); // logs "NaN", because the property "count" is not in the window scope. NaN = Not a number.
 //We get NaN as output because we are trying to increment a non-number value. this.count is not defined, hence it is not a number and cannot be incremented.
 
 //With ARROW functions, the 'this' scope is more easily preserved
