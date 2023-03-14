@@ -52,6 +52,7 @@ With traditional function expressions, code like this does not work as expected:
 ********************
 Note: 'this' reers to the object that is executing the current function if the function is inside an object.
 Note: 'this' refers to the global object (eg: window) if it is inside a function.
+Note: arrow functions do not have their own binding, the arrow function uses lexical scoping (context of outer function) to preserve the `this` value 
 */
 const obj1 = {
   count: 10,
