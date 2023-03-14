@@ -6,6 +6,9 @@ Any defined global variable, meaning any variable declared outside of a function
 Local variables exist only within the function body of which they are defined and will have a different scope for every call of that function. 
 There it is subject for value assignment, retrieval, and manipulation only within that call and is not accessible outside of that scope.
 
+Traditionally (before ES6), JavaScript only had two kinds of scopes: function scope and global scope. Variables declared with var are either function-scoped or global-scoped, 
+depending on whether they are declared within a function or outside a function. This can be tricky, because blocks with curly braces do not create scopes.
+
 ECMAScript 6 (ES6/ES2015) introduced the let and const keywords that support the declaration of block scope local variables. 
 This means the variable will be confined to the scope of a block that it is defined in, such as an if statement or for loop and will not 
 be accessible outside of the opening and closing curly braces of the block. This is contrary to var declarations which are accessible 
