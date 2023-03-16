@@ -11,3 +11,11 @@ user.name = "Pete"; // (*)
 console.log(user.name); // Pete
 // It might seem that the line (*) would cause an error, but it does not. The value of user is constant, it must always reference the same object, but
 // properties of that object are free to change. In other words, the const user gives an error only if we try to set user=... as a whole.
+
+//SUMMARY: CONST means we cannot redeclare or reassign a variable. But in the case of CONST variable that refer to an OBJECT, we CANNOT modify what 
+//ADDRESS (reference) the variable holds, however, we can still modify the properties of the object.
+//In other words, we cannot make 'a' reference variable hold a address that reference variable b is holding. 
+//I could do that if the reference variable was declared as 'var' or 'let'
+//example:
+const a = {name: "Hemraj"};
+let b = {age: 34}; 
