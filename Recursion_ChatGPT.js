@@ -20,12 +20,12 @@ factorial(4)
         factorial(0)
 // At this point, the base case is triggered and the function starts returning values back up the call stack:
 
-factorial(0) returns 1
-factorial(1) returns 1 * 1 = 1
-factorial(2) returns 2 * 1 = 2
-factorial(3) returns 3 * 2 = 6
-factorial(4) returns 4 * 6 = 24
-And the final result is 24, the factorial of 4.
+factorial(0) returns 1 //factorial(0)
+factorial(1) returns 1 * 1 = 1 //1* factorial(0)
+factorial(2) returns 2 * 1 = 2 //2*factorial(2-1)
+factorial(3) returns 3 * 2 = 6 //3*factorial(3-1)
+factorial(4) returns 4 * 6 = 24 //4*factorial(4-1). Factorial(3) = 6
+//And the final result is 24, the factorial of 4.
 
 // It's important to note that recursive functions can be very powerful, but they can also be inefficient if not implemented properly. 
-// It's important to carefully consider the base case and ensure that the function is not calling itself excessively or unnecessarily
+// It's important to carefully consider the base case and ensure that the function is not calling itself excessively or unnecessarily. 
