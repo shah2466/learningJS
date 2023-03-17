@@ -1,0 +1,12 @@
+ChatGPT: In JavaScript, an object is a collection of key-value pairs where the keys are always strings or symbols. When an object is created, the keys are converted to strings if they are not already strings. This means that even if you use an integer as a key, it will be converted to a string.
+For example, consider the following code:
+const obj = { 1: 'one', 2: 'two', 3: 'three' };
+console.log(Object.keys(obj)); // output: ["1", "2", "3"];
+Here, we are creating an object obj with keys 1, 2, and 3 and their respective values. However, when we use the Object.keys() method to get an array of the object's keys, we see that the keys are actually strings, not integers.
+
+This behavior is important to keep in mind when working with objects in JavaScript, especially when dealing with arrays. Array indices are also treated as keys in JavaScript objects, and they are also converted to strings. For example:
+
+const arr = ['one', 'two', 'three'];
+console.log(Object.keys(arr)); // output: ["0", "1", "2"]
+In this case, the array arr is treated as an object, with its indices as keys. When we use the Object.keys() method to get the keys of the array, we see that the indices are converted to strings.
+It's important to note that while array indices are actually strings under the hood, they are still treated as integers in most cases, such as when using array methods like push() or pop().
