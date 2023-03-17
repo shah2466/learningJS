@@ -1,0 +1,14 @@
+2's complement works the following way. Let's say you have the signed integer 10011, you want to know what decimal is is.
+
+Flip all the bits: 10011 --> 01100
+Add 1: 01100 --> 01101
+Read it as an unsigned integer: 01101 = 0*2^4 + 1*2^3 + 1*2^2 + 0*2^1 + 1*2^0 = 13.
+10011 represents -13. This representation is very handy because it works both ways. How to represent -7 as a binary signed integer ? 
+Start with the binary representation of 7 which is 00111.
+
+Flip all the bits: 00111 --> 11000
+Add 1: 11000 --> 11001
+And that's it ! On 5 bits, -7 is represented by 11001.
+
+I won't cover it, but another great advantage with 2's complement is that the addition works the same way. 
+That is, When adding two binary numbers you do not have to care if they are signed or unsigned, this is the same algorithm behind.
