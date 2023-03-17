@@ -1,0 +1,11 @@
+Equality comparisons and sameness
+JavaScript provides three different value-comparison operations:
+
+=== — strict equality (triple equals)
+== — loose equality (double equals)
+Object.is()
+Which operation you choose depends on what sort of comparison you are looking to perform. Briefly:
+
+Double equals (==) will perform a type conversion when comparing two things, and will handle NaN, -0, and +0 specially to conform to IEEE 754 (so NaN != NaN, and -0 == +0);
+Triple equals (===) will do the same comparison as double equals (including the special handling for NaN, -0, and +0) but without type conversion; if the types differ, false is returned.
+Object.is() does no type conversion and no special handling for NaN, -0, and +0 (giving it the same behavior as === except on those special numeric values).
