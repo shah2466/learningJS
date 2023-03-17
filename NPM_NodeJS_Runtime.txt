@@ -1,0 +1,13 @@
+Language and runtime
+JavaScript is a general-purpose scripting language. The core language specification focuses on pure computational logic. 
+It doesn't deal with any input/output — in fact, without extra runtime-level APIs (most notably console.log()), a JavaScript program's behavior is entirely unobservable.
+
+Certain JS features are language-level while others are runtime-level.
+JavaScript is a general-purpose scripting language. The core language specification focuses on pure computational logic. It doesn't deal with any input/output — in fact, without extra runtime-level APIs (most notably console.log()), a JavaScript program's behavior is entirely unobservable.
+A runtime, or a host, is something that feeds data to the JavaScript engine (the interpreter), provides extra global properties, and provides hooks for the engine to interact with the outside world. Module resolution, reading data, printing messages, sending network requests, etc. are all runtime-level operations. Since its inception, JavaScript has been adopted in various runtime environments, such as browsers (which provide APIs like DOM), Node.js (which provides APIs like file system access), etc.
+npm is a package manager for Node.js. that allows developers to manage and install packages and dependencies for use within a JavaScript runtime environment like Node.js.
+Node.js is a runtime environment for JavaScript that allows you to run JavaScript code on the server-side.
+
+A runtime is the environment in which a program or script is executed. It is responsible for loading the program into memory, providing access to the necessary resources (such as memory, CPU, and input/output devices), and executing the program's instructions.
+
+In the context of JavaScript, a runtime can refer to different environments where JavaScript code can be executed, such as a web browser, a server-side environment like Node.js, or a mobile app runtime like React Native. Each runtime provides a set of APIs that allow developers to interact with the underlying system and perform various tasks, such as manipulating the DOM in the case of a browser runtime, or accessing the file system in the case of a server-side runtime.
