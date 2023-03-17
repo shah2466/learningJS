@@ -1,0 +1,24 @@
+A bitwise operator treats their operands as a set of 32 bits (zeros and ones), rather than as decimal, hexadecimal, or octal numbers. 
+For example, the decimal number nine has a binary representation of 1001. Bitwise operators perform their operations on such binary representations, 
+but they return standard JavaScript numerical values.
+
+The following table summarizes JavaScript's bitwise operators.
+
+Operator	      Usage	      Description
+Bitwise AND	    a & b	      Returns a one in each bit position for which the corresponding bits of both operands are ones.
+Bitwise OR	    a | b	      Returns a zero in each bit position for which the corresponding bits of both operands are zeros.
+
+Bitwise logical operators
+Conceptually, the bitwise logical operators work as follows:
+
+The operands are converted to thirty-two-bit integers and expressed by a series of bits (zeros and ones). Numbers with more than 32 bits get their most significant bits discarded. For example, the following integer with more than 32 bits will be converted to a 32-bit integer:
+Before: 1110 0110 1111 1010 0000 0000 0000 0110 0000 0000 0001
+After:                 1010 0000 0000 0000 0110 0000 0000 0001
+Copy to Clipboard
+Each bit in the first operand is paired with the corresponding bit in the second operand: first bit to first bit, second bit to second bit, and so on.
+The operator is applied to each pair of bits, and the result is constructed bitwise.
+For example, the binary representation of nine is 1001, and the binary representation of fifteen is 1111. So, when the bitwise operators are applied to these values, the results are as follows:
+
+Expression	Result	Binary Description
+15 & 9	9	1111 & 1001 = 1001
+15 | 9	15	1111 | 1001 = 1111
