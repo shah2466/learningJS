@@ -1,0 +1,7 @@
+In JavaScript, "semantic" generally refers to the meaning of code or programming constructs rather than their syntax or structure.
+
+For example, when you write a variable name like "totalPrice", the word "totalPrice" has semantic meaning because it communicates that the variable is storing a value that represents a total price.
+
+Similarly, HTML elements have semantic meaning when they are used to convey information about the content they contain. For example, using the <header> tag in HTML to wrap the top portion of a web page is semantically meaningful because it communicates that this section is the header of the page.
+
+In JavaScript, writing semantically meaningful code can make it easier for others to read and understand your code, and can also help you to write more maintainable and extensible programs.
