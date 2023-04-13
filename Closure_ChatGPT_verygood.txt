@@ -1,0 +1,26 @@
+Q: what is the different between javascript closure and closure scope? provide example
+
+avaScript closures and closure scopes are related concepts, but they have different meanings.
+
+A closure is a function that retains access to variables in its parent scope, even after the parent function has returned. This means that a closure "closes over" its surrounding state, allowing the enclosed function to access and manipulate variables that would otherwise be out of scope.
+
+Closure scope, on the other hand, refers to the set of variables that are accessible to a closure. When a closure is created, it captures a snapshot of its enclosing scope, including all variables and functions that are in scope at that time. This snapshot forms the closure scope, which is used by the closure whenever it is called.
+
+Here's an example to help illustrate the difference:
+
+function outer() {
+  var x = 10;
+  
+  function inner() {
+    console.log(x);
+  }
+  
+  return inner;
+}
+
+var closureFn = outer();
+closureFn(); // logs 10
+
+In this example, the outer function creates a closure by defining the inner function and returning it. The inner function has access to the x variable, which is defined in the parent outer function. When we call outer and store the result in closureFn, we are actually storing a reference to the closure that was created. When we call closureFn, it invokes the inner function and logs the value of x, which is still in scope because of the closure.
+
+In this case, the closure scope includes the x variable, but not the inner function itself. The closure retains a reference to the inner function, but it does not include it in its scope.
