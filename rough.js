@@ -1,5 +1,7 @@
-function add(a, b) {
-  console.log("hello!");
-  return a + b;
+function getCurrentTime() {
+  const today = new Date();
+  const hour = String(today.get()).padStart(2, "0");
+  return hour;
 }
-console.log(add(5, 6));
+
+console.log(getCurrentTime());
