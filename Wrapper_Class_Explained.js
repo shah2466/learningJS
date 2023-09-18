@@ -1,4 +1,4 @@
-// Wrapper classes in JavaScript are a group of classes that represent primitive data types (such as Number, String, Boolean, etc.) as objects.
+// Wrapper classes in JavaScript are a group of classes that represent "primitive data types (such as Number, String, Boolean, etc.) as objects".
 // These classes provide a set of methods and properties that allow you to work with primitive values as if they were objects.
 // For example, the 'Number' wrapper class allows you to create a number object and call methods like toFixed(), toExponential(), toPrecision(), etc. on it,
 // whereas the primitive number value does not have these methods.

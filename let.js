@@ -37,7 +37,7 @@ There it is subject for value assignment, retrieval, and manipulation only withi
 
 ECMAScript 6 (ES6/ES2015) introduced the let and const keywords that support the declaration of block scope local variables. 
 This means the variable will be confined to the scope of a block that it is defined in, such as an if statement or for loop and will not 
-be accessible outside of the opening and closing curly braces of the block. This is contrary to var declarations which are accessible 
+be accessible outside of the opening and closing curly braces of the block. This is contrary to 'var' declarations which are accessible 
 outside blocks they are defined in. The difference between let and const is that a const declaration is, as the name implies, constant - a read-only 
 reference to a value. This does not mean the value is 'immutable', just that the 'variable identifier' cannot be reassigned.
  */

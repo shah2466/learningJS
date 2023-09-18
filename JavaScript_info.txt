@@ -1,23 +1,44 @@
 1) JavaScript Asynchronous Programming and Callbacks:
-JavaScript is synchronous by default, and is single threaded. This means that code cannot create new threads and run in parallel.
-Lines of code are executed in series, one after another. In other words, it is synchronous.
+JavaScript is single threaded. This means that code cannot create new threads and run in parallel.
+Lines of code are executed in series, one after another. 
+JavaScript's single-threaded nature means that it executes code sequentially in one thread, which could be seen as synchronous. However, its ability to 
+work with asynchronous operations using various mechanisms (call back, promises, async/await) makes it asynchronous in practice, as it can efficiently handle concurrency 
+and non-blocking tasks. 
+This asynchronicity is crucial for building responsive web applications that can perform multiple tasks concurrently without freezing the user interface.
+
+In JavaScript, asynchronous operations are tasks that do not block the execution of other code while they are being executed. 
+They allow the program to continue running other tasks without waiting for the asynchronous task to finish. 
+Asynchronous operations can include tasks like making HTTP requests, reading files, or handling user input.
+
+Event Loop Execution:
+
+The event loop continuously checks for completed asynchronous operations and their associated Promise handlers.
+When an asynchronous operation finishes, its callback function is placed in the 'event queue'.
+The 'event loop' picks up these callbacks from the queue and executes them in the order they were added, allowing you to respond to the results of the asynchronous operations.
+In summary, the 'event loop and promises work together to enable asynchronous programming in JavaScript'. 
+--Promises provide a structured way to manage and handle asynchronous tasks, and 
+--the event loop ensures that the code attached to these promises is executed at the appropriate time when the asynchronous operations complete. 
+
 The JavaScript engine executes a script from the top of the file and works its way down. It creates the 'execution contexts', pushes, and pops functions onto 
 and off the 'call stack' in the execution phase.
 If a function takes a long time to execute, you cannot interact with the web browser during the function’s execution because the page hangs.
 A function that takes a long time to complete is called a 'blocking function'. Technically, a blocking function blocks all the interactions on the webpage, 
-such as mouse click. An example of a blocking function is a function that calls an API from a remote server.
+such as mouse click. 
+--An example of a blocking function is a function that calls an API from a remote server.
 
 Asynchronicity: means that if JavaScript has to wait for an operation to complete, it will execute the rest of the code while waiting.
 
-EVENT LOOP:  Used to acheive concurrency/Asynchronicity . Constantly running process that coordinates the tasks between the call stack and callback queue to achieve concurrency.
+EVENT LOOP:  Used to acheive concurrency/Asynchronicity. Constantly running process that coordinates the tasks between the 'call stack' and 'callback queue' to achieve concurrency.
 To prevent a blocking function from blocking other activities, you typically put it in a callback function for execution later.
 Asynchronous means the JavaScript engine can execute other tasks while waiting for another task to be completed.
 
-When you call the setTimeout(), the JavaScript engine creates a new function execution context and places it on the call stack.
+When you call the setTimeout(), the JavaScript engine creates a new 'function execution context' and places it on the 'call stack'.
 The setTimeout() executes and creates a TIMER in the Web APIs component of the web browser. When the timer expires, the callback function 
 that was passed in the setTimeout() is placed to the callback queue.
-The event loop monitors both the call stack and the callback queue. when the call stack is empty, the event loop removes the callback function from the callback queue and places it 
+
+The event loop monitors both the 'call stack' and the 'callback queue'. when the 'call stack' is empty, the event loop removes the callback function from the 'callback queue' and places it 
 to call stack . Once the callback function is on the call stack, it is executed.
+
 
 Computers are asynchronous by design. Asynchronous means that things can happen independently of the main program flow. 
 In the current consumer computers, every program runs for a specific time slot and then it stops its execution to let another program continue their execution. 
@@ -179,7 +200,7 @@ Const: declarations are hoisted to the top but are NOT initialized.
 Hoisting is more of a compile-time thing. 
 JavaScript interpreter hoists the 'entire' function declaration to the top of the current scope. In other words, they are parsed and evaluated before any other 
 code (This is opposed to 'function expressions', which are evaluated inline).
-Function hoisting only works with function declarations — not with function expressions. The code below will not work.
+**Function hoisting only works with function declarations — not with function expressions. The code below will not work.
 
 console.log(square); // ReferenceError: Cannot access 'square' before initialization
 const square = function (n) {
@@ -189,10 +210,10 @@ const square = function (n) {
 7) In computer programming, to 'bind' is to create a connection between two or more programming objects for a specified time.
 
 7) Var vs Const vs Let
-VAR: The scope is global when a var variable is declared outside a function. var is function scoped when it is declared within a function.
+VAR: The scope is "global" when a var variable is declared outside a function. var is function scoped when it is declared within a function.
 	var variables can be re-declared and updated.
 
-LET: let is now preferred for variable declaration. 'let' is block scoped. A block is a chunk of code bounded by {}. A block lives in curly braces. 
+LET: let is now preferred for variable declaration. 'let' is block scoped. A "block" is a chunk of code bounded by {}. A block lives in curly braces. 
 Anything within curly braces is a block. So a variable declared in a block with 'let'  is only available for use within that block.
 'let' can be UPDATED but NOT re-declared.
 
@@ -255,9 +276,9 @@ In this syntax, the part on the right side of the assignment operator(=) is a fu
 11) Function methods: apply, call, and bind
 A function object has three important methods: apply(), call() and bind(). 
 bind(), call(), and apply() methods are also known as borrowing functions (explained at the end).
-Call is a function that helps you change the context of the invoking function. In layperson's terms, it helps you replace the value of this inside a function with whatever value you want.
-Apply is very similar to the call function. The only difference is that in apply you can pass an array as an argument list.
-Bind is a function that helps you create another function that you can execute later with the new context of this that is provided.
+Call is a function that helps you change the context of the invoking function. In layperson's terms, it helps you replace the value of 'this' inside a function with whatever value you want.
+Apply is very similar to the call function. The only difference is that in apply you can pass an 'array as an argument list'.
+Bind is a function that helps you create another function that you can execute later with the new context of 'this' that is provided.
 
 The apply() and call() methods call a function with a given 'this' value and arguments.
 The difference between the apply() and call() is that you need to pass the arguments to the apply() 
@@ -288,7 +309,7 @@ b) Reference values that refer to objects.
 Non-Static data is stored in HEAP memory. JavaScript 'object's and 'functions' are non-static and live in heap.
 The JavaScript engine doesn’t allocate a fixed amount of memory for these objects. Instead, it’ll allocate more space as needed.
 Unlike a reference value, a primitive value cannot have properties. This means that you cannot add a property to a primitive value.
-JavaScript allows you to add a property to a primitive value. However, it won’t take any effect.
+JavaScript allows you to add a property to a primitive value. However, it won’t take any effect. You can acheive this by using Wrapper classes.
 
 Copying a value:
 When you assign a PRIMITIVE value from one variable to another, the JavaScript engine creates a SEPARATE copy of that value and assigns it to the variable.
@@ -337,7 +358,7 @@ For example an array will return the values of all the array elements whereas a 
 So you can use:
 for .. of for [array, Map, Set, String] to iterate over values; 
 for...of loop only iterates through the integer properties of an array. That is, only the indices of the array.
-for .. in for an array to iterate over a key;
+for .. in for an array to iterate over a 'key';
 for .. in for objects to enumerate its (object's) properties;
 
 Just remember! 

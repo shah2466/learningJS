@@ -1,4 +1,5 @@
-arbage collection is an important aspect of memory management in programming languages, including JavaScript. In JavaScript, memory management is done automatically by the browser or runtime environment, which means that you don't have to manually allocate or deallocate memory like you do in low-level programming languages.
+arbage collection is an important aspect of memory management in programming languages, including JavaScript. 
+In JavaScript, memory management is done automatically by the browser or runtime environment, which means that you don't have to manually allocate or deallocate memory like you do in low-level programming languages.
 
 JavaScript uses a garbage collector to free up memory that is no longer needed by your program. The garbage collector works by periodically searching through your program's memory and identifying objects that are no longer being used or referenced. It then frees up the memory used by those objects so that it can be reused by other parts of your program.
 

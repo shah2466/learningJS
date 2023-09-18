@@ -2,7 +2,7 @@
  * Reference values are also passed by VALUES.
  * JavaScript passes all arguments to a function by VALUES.
 Function arguments are local variables in JavaScript.
-In JavaScript, all function arguments are always passed by value. 
+In JavaScript/Java, all function arguments are always passed by value. 
 It means that JavaScript copies the values of the variables into the function arguments.
 
 1) If the variable is of primitive type and it is passed into a function, the argument variable makes a COMPLETELY NEW COPY of the variable, 
@@ -14,18 +14,6 @@ variable inside the function that copied the reference variable (the address of 
 Any changes the 'argument variable' makes to the object from inside the function will be visible to the 'reference variable' outside the function because they 
 both are pointing to the same object.
 
-
-
-Any changes that you make to the arguments inside the function DO NOT REFLECT the passing variables outside of the function. 
-In other words, the changes made to the arguments are not reflected outside of the function.
-
-In my opinion, 'Reference variable' should be called 'object variable' to clear confusion.
-
-If function arguments are passed by reference, the changes of variables that you pass into the function will be reflected outside the function. 
-This is not possible in JavaScript.
-
-***My understanding is, when passing the value of a reference variable to a function, the object itself can be modified but you cannot modify which object the 
-referencED variable ('person1' in below example) points to. Meaning you cannot modify the address value the referencED variable holds.**************/
 
 /*********UNCOMMENT below */
 

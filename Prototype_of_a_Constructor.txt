@@ -1,5 +1,5 @@
 In javascript, what does the following statements mean?
-constructors in JavaScript provide us with something like a class definition, enabling us to define the "shape" of an object, 
+Constructors in JavaScript provide us with something like a class definition, enabling us to define the "shape" of an object, 
 including any methods it contains, in a single place. But prototypes can be used here, too. 
 For example, if a method is defined on a constructor's prototype property, then all objects created using that constructor 
 get that method via their prototype, and we don't need to define it in the constructor.
@@ -9,8 +9,8 @@ In JavaScript, objects can be created using constructor functions. A constructor
 structure. The constructor function contains the definition of the properties and methods that the objects will have.
 Prototypes are a way to share methods and properties among objects. Each object in JavaScript has a prototype property, which points to an object that provides 
 it with its properties and methods. When a method or property is called on an object, JavaScript looks for that property or method in the object itself, and 
-if it can't find it, it looks for it in the object's prototype. Using prototypes, we can define methods and properties on a constructor's prototype property 
-instead of defining them in the constructor function itself. This allows all objects created using that constructor to inherit those methods and properties 
+if it can't find it, it looks for it in the object's prototype. **Using prototypes, we can define methods and properties on a 'constructor's prototype property' 
+instead of defining them in the constructor function itself***. This allows all objects created using that constructor to inherit those methods and properties 
 from the prototype object, without having to define them again for each object. This can save memory and make our code more efficient.
 So, in summary, the statement is saying that constructors in JavaScript can be used to define the "shape" of an object, including any methods it contains, in a 
 single place. However, we can also use prototypes to define methods on the prototype property of the constructor, which will be inherited by all objects created 

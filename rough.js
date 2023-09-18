@@ -1,7 +1,5 @@
-function getCurrentTime() {
-  const today = new Date();
-  const hour = String(today.get()).padStart(2, "0");
-  return hour;
-}
+let outerVar = "";
+console.log(outerVar);
 
-console.log(getCurrentTime());
+let innerVar;
+console.log(innerVar);
